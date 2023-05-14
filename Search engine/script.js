@@ -1,12 +1,13 @@
+"use strict";
 const search = document.querySelector(".search");
-const drinkList = document.querySelectorAll("li");
-search.addEventListener("keyup", showDrink);
+const productList = document.querySelectorAll("li");
+search.addEventListener("keyup", showProduct);
 
-function showDrink(e) {
-  drinkList.forEach((element) => {
-    const text = e.target.value.toLowerCase();
-    const drink = element.textContent.toLocaleLowerCase();
-    if (drink.includes(text)) {
+function showProduct() {
+  productList.forEach((element) => {
+    const regexp = new RegExp(search.value, "i");
+    const product = element.textContent;
+    if (regexp.test(product)) {
       element.style.display = "block";
     } else {
       element.style.display = "none";
